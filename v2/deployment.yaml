@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-example-app-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: go-example-app
+          image: evanfleming/go-example-app:v2
+          ports:
+            - containerPort: 8080

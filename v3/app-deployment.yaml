@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-example-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: go-example-app
+          image: go-example-app
+          imagePullPolicy: Never # this is just for local so we don't have to push/pull the docker image
+          ports:
+            - containerPort: 8080

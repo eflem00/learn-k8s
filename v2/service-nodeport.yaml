@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-example-app-nodeport-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3050 # internal port for other pods to communicate on
+      targetPort: 8080 # port that container listens on
+      nodePort: 31515 # external port, randomized if not specified
+  selector:
+    component: web # link to pod file

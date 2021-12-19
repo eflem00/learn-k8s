@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-example-app-pod
+  labels:
+    component: web # exposed for selector that service uses
+spec:
+  containers:
+    - name: go-example-app
+      image: evanfleming/go-example-app # location of image to pull from
+      ports:
+        - containerPort: 8080
